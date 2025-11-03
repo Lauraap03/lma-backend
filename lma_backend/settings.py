@@ -34,8 +34,9 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://localhost:5173",
-    "https://tu-sitio.netlify.app",  # 👈 pon aquí el real de Netlify
+    "https://tu-nuevo-sitio.netlify.app",
 ]
+
 
 
 # Application definition
