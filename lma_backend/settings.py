@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-jn5&s$gv^0qgi=_q&a*l3v49tdsj!c&58)o+psoeq+&x$32s6*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "https://lma-backend-jp46.onrender.com",  # 👈 el que te muestra Render
+    ".netlify.app",                   # 👈 para que el frontend pueda llamar
+]
 
 
 # Application definition
