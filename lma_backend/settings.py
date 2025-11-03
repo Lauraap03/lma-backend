@@ -28,8 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "https://lma-backend-jp46.onrender.com",  # 👈 el que te muestra Render
+    "lma-backend-jp46.onrender.com",  # 👈 el que te muestra Render
     ".netlify.app",                   # 👈 para que el frontend pueda llamar
+]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://localhost:5173",
+    "https://tu-sitio.netlify.app",  # 👈 pon aquí el real de Netlify
 ]
 
 
