@@ -25,17 +25,24 @@ SECRET_KEY = 'django-insecure-jn5&s$gv^0qgi=_q&a*l3v49tdsj!c&58)o+psoeq+&x$32s6*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 👇 ESTA lista debe ir SIN "https://"
 ALLOWED_HOSTS = [
+    "lma-backend-jp46.onrender.com",  # tu backend en Render
     "localhost",
     "127.0.0.1",
-    "lma-backend-jp46.onrender.com",  # 👈 el que te muestra Render
-    ".netlify.app",                   # 👈 para que el frontend pueda llamar
+    ".netlify.app",                   # cualquier sitio de Netlify
 ]
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "https://localhost:5173",
-    "https://tu-nuevo-sitio.netlify.app",
+    "https://liceomexicoamericano.netlify.app",
 ]
+
+# Para peticiones desde HTTPS (Netlify/Render)
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.netlify.app",
+    "https://lma-backend-jp46.onrender.com",
+]
+CORS_ALLOW_CREDENTIALS = True
 
 
 
@@ -57,10 +64,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # ← arriba
+    "corsheaders.middleware.CorsMiddleware",  # debe ir ARRIBA de CommonMiddleware
     "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
-     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -157,3 +164,10 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DRF sin autenticación para este endpoint público
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ]
+}
